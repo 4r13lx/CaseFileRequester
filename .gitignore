@@ -17,17 +17,17 @@
 mono_crash.*
 
 # Build results
-#[Dd]ebug/ -> Commented to upload dlls dependencies
+[Dd]ebug/
 [Dd]ebugPublic/
-#[Rr]elease/ -> Commented to upload dlls dependencies
-#[Rr]eleases/ -> Commented to upload dlls dependencies
+[Rr]elease/
+[Rr]eleases/
 x64/
 x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-# [Bb]in/ -> Commented to upload dlls dependencies
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/

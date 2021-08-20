@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BotTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Query_Camera" Type="System.String" Scope="User">
+      <Value Profile="(Default)">camara</Value>
+    </Setting>
+    <Setting Name="Query_File" Type="System.String" Scope="User">
+      <Value Profile="(Default)">numero</Value>
+    </Setting>
+    <Setting Name="Query_Year" Type="System.String" Scope="User">
+      <Value Profile="(Default)">anio</Value>
+    </Setting>
+    <Setting Name="Login_Logout" Type="System.String" Scope="User">
+      <Value Profile="(Default)">j_idt24:menuNavigation:j_idt51:j_idt57</Value>
+    </Setting>
+    <Setting Name="Query_Submit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">consultaFiltroSearchButtonSAU</Value>
+    </Setting>
+    <Setting Name="Lawers" Type="BotTestEntities.Lawers" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Main_Site" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://scw.pjn.gov.ar/scw/home.seam</Value>
+    </Setting>
+    <Setting Name="Login_User" Type="System.String" Scope="User">
+      <Value Profile="(Default)">username</Value>
+    </Setting>
+    <Setting Name="Login_Pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">password</Value>
+    </Setting>
+    <Setting Name="Login_Submit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kc-login</Value>
+    </Setting>
+    <Setting Name="Main_Login" Type="System.String" Scope="User">
+      <Value Profile="(Default)">menuLoginId</Value>
+    </Setting>
+    <Setting Name="Query_RelatedFiles" Type="System.String" Scope="User">
+      <Value Profile="(Default)">btn-lista-relacionados</Value>
+    </Setting>
+    <Setting Name="Query_Site" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://scw.pjn.gov.ar/scw/homePrivado.seam</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
