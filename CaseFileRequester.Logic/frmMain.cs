@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 using CaseFileRequester.Entities;
@@ -25,10 +28,15 @@ namespace CaseFileRequester.Logic
             try
             {
                 InitializeComponent();
-                
+
                 // Config Gecko browser
+                // Uncomment in Test
+                //string appDirectory = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf("bin"));
+                //Gecko.Xpcom.Initialize(Path.Combine(appDirectory, "FireFox"));
+                // Uncomment in Prod
                 Gecko.Xpcom.Initialize("FireFox");
                 Gecko.GeckoPreferences.Default["extensions.blocklist.enabled"] = false;
+                Gecko.GeckoPreferences.Default["pdfjs.disabled"] = true;
 
                 // Load main page
                 this.LoadMainPage();
@@ -311,9 +319,11 @@ namespace CaseFileRequester.Logic
 
                 // Validate controls
                 Logic.Validators.ValidateControls(btnGoToLoginPage);
-                
+
+                wbSite.Navigate(CaseFileRequester.Logic.Properties.Settings.Default.Query_Site);
+
                 // Login
-                btnGoToLoginPage.Click();
+                //btnGoToLoginPage.Click();
                 this.Action = eAction.LOAD_LOGIN_PAGE;
             }
             catch (Exception ex) { throw ex; }
@@ -329,9 +339,9 @@ namespace CaseFileRequester.Logic
                     return;
 
                 // Get html controls
-                Gecko.GeckoHtmlElement userInput = wbSite.Document.GetHtmlElementById(Properties.Settings.Default.Login_User);
-                Gecko.GeckoHtmlElement passInput = wbSite.Document.GetHtmlElementById(Properties.Settings.Default.Login_Pass);
-                Gecko.GeckoHtmlElement submitInput = wbSite.Document.GetHtmlElementById(Properties.Settings.Default.Login_Submit);
+                Gecko.GeckoHtmlElement userInput = wbSite.Document.GetHtmlElementById(CaseFileRequester.Logic.Properties.Settings.Default.Login_User);
+                Gecko.GeckoHtmlElement passInput = wbSite.Document.GetHtmlElementById(CaseFileRequester.Logic.Properties.Settings.Default.Login_Pass);
+                Gecko.GeckoHtmlElement submitInput = wbSite.Document.GetHtmlElementById(CaseFileRequester.Logic.Properties.Settings.Default.Login_Submit);
 
                 // Validate if the controls exists
                 Logic.Validators.ValidateControls(userInput, passInput, submitInput);
@@ -339,7 +349,7 @@ namespace CaseFileRequester.Logic
                 // Get default or ocasional user
                 CaseFileRequester.Entities.Lawer lawer = null;
                 if (OcasionalUser == null || this.OcasionalUser.Name == "Ninguno")
-                    lawer = Properties.Settings.Default.Lawers.LstLawers.Where(x => x.DefaultUser == true).FirstOrDefault();
+                    lawer = CaseFileRequester.Logic.Properties.Settings.Default.Lawers.LstLawers.Where(x => x.DefaultUser == true).FirstOrDefault();
                 else
                     lawer = OcasionalUser;
 
@@ -363,9 +373,9 @@ namespace CaseFileRequester.Logic
             try
             {
                 // Get HTML controls
-                Gecko.GeckoHtmlElement numeroInput = this.FindControl(Properties.Settings.Default.Query_File);
-                Gecko.GeckoHtmlElement anioInput = this.FindControl(Properties.Settings.Default.Query_Year);
-                Gecko.GeckoHtmlElement submit = this.FindControl(Properties.Settings.Default.Query_Submit);
+                Gecko.GeckoHtmlElement numeroInput = this.FindControl(CaseFileRequester.Logic.Properties.Settings.Default.Query_File);
+                Gecko.GeckoHtmlElement anioInput = this.FindControl(CaseFileRequester.Logic.Properties.Settings.Default.Query_Year);
+                Gecko.GeckoHtmlElement submit = this.FindControl(CaseFileRequester.Logic.Properties.Settings.Default.Query_Submit);
 
                 // Validate controls
                 try { Logic.Validators.ValidateControls(numeroInput, anioInput, submit); }
@@ -393,9 +403,9 @@ namespace CaseFileRequester.Logic
             try
             {
                 // Go to Query page
-                this.wbSite.Navigate(Properties.Settings.Default.Query_Site);
+                this.wbSite.Navigate(CaseFileRequester.Logic.Properties.Settings.Default.Query_Site);
 
-                Gecko.GeckoHtmlElement newRequest = this.FindControl(Properties.Settings.Default.Query_RelatedFiles);
+                Gecko.GeckoHtmlElement newRequest = this.FindControl(CaseFileRequester.Logic.Properties.Settings.Default.Query_RelatedFiles);
                 if (newRequest == null) return;
                 newRequest.Click();
                 this.Action = eAction.NEW_SEARCH;
@@ -408,7 +418,7 @@ namespace CaseFileRequester.Logic
             try
             {
                 // Go to login page
-                Gecko.GeckoHtmlElement btnLogOut = this.FindControl(Properties.Settings.Default.Login_Logout);
+                Gecko.GeckoHtmlElement btnLogOut = this.FindControl(CaseFileRequester.Logic.Properties.Settings.Default.Login_Logout);
                 if (btnLogOut == null) return false;
 
                 //Gecko.GeckoHtmlElement btnLogOut = wbSite.Document.GetHtmlElementById(BotTest.Properties.Settings.Default.Login_Logout);
@@ -460,7 +470,7 @@ namespace CaseFileRequester.Logic
                 // Show user used to login
                 Lawer lawer = null;
                 if (this.OcasionalUser == null)
-                    lawer = Properties.Settings.Default.Lawers?.LstLawers?.Where(x => x.DefaultUser == true).FirstOrDefault();
+                    lawer = CaseFileRequester.Logic.Properties.Settings.Default.Lawers?.LstLawers?.Where(x => x.DefaultUser == true).FirstOrDefault();
                 else
                     lawer = this.OcasionalUser;
 
@@ -486,7 +496,7 @@ namespace CaseFileRequester.Logic
                 this.tsddbUsers.DropDown.Items.Clear();
 
                 // Add users to the menu
-                foreach (Lawer item in Properties.Settings.Default.Lawers?.LstLawers)
+                foreach (Lawer item in CaseFileRequester.Logic.Properties.Settings.Default.Lawers?.LstLawers)
                 {
                     ToolStripMenuItem tsmi = new ToolStripMenuItem($"{item.Name} {item.Address}");
                     tsmi.Checked = item.DefaultUser;

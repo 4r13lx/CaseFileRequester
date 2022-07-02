@@ -27,7 +27,7 @@ namespace CaseFileRequester.Logic
             try
             {
                 // Validate user
-                if ((Properties.Settings.Default.Lawers == null) || Properties.Settings.Default.Lawers.LstLawers == null)
+                if ((CaseFileRequester.Logic.Properties.Settings.Default.Lawers == null) || CaseFileRequester.Logic.Properties.Settings.Default.Lawers.LstLawers == null)
                     return false;
                 return true;
             }

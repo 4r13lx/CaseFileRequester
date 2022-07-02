@@ -192,26 +192,26 @@ namespace CaseFileRequester.Logic
                 // Save lawers data
                 Lawers lawers = new Lawers();
                 lawers.LstLawers = this.lstLawers;
-                Properties.Settings.Default.Lawers = lawers;
+                CaseFileRequester.Logic.Properties.Settings.Default.Lawers = lawers;
 
                 // Save login site conf data
-                Properties.Settings.Default.Main_Site = this.txtMain_Site.Text;
-                Properties.Settings.Default.Login_User = this.txtLogin_User.Text;
-                Properties.Settings.Default.Login_Pass = this.txtLogin_Pass.Text;
-                Properties.Settings.Default.Main_Login = this.txtMain_Login.Text;
-                Properties.Settings.Default.Login_Submit = this.txtLogin_Submit.Text;
-                Properties.Settings.Default.Login_Logout = this.txtLogin_Logout.Text;
+                CaseFileRequester.Logic.Properties.Settings.Default.Main_Site = this.txtMain_Site.Text;
+                CaseFileRequester.Logic.Properties.Settings.Default.Login_User = this.txtLogin_User.Text;
+                CaseFileRequester.Logic.Properties.Settings.Default.Login_Pass = this.txtLogin_Pass.Text;
+                CaseFileRequester.Logic.Properties.Settings.Default.Main_Login = this.txtMain_Login.Text;
+                CaseFileRequester.Logic.Properties.Settings.Default.Login_Submit = this.txtLogin_Submit.Text;
+                CaseFileRequester.Logic.Properties.Settings.Default.Login_Logout = this.txtLogin_Logout.Text;
 
                 // Save query site conf data
-                Properties.Settings.Default.Query_Site = this.txtQuery_Site.Text.Trim();
-                Properties.Settings.Default.Query_Camera = this.txtQuery_Camera.Text.Trim();
-                Properties.Settings.Default.Query_File = this.txtQuery_File.Text.Trim();
-                Properties.Settings.Default.Query_Year = this.txtQuery_Year.Text.Trim();
-                Properties.Settings.Default.Query_RelatedFiles = this.txtQuery_RelatedFiles.Text.Trim();
-                Properties.Settings.Default.Query_Submit = this.txtQuery_Submit.Text.Trim();
+                CaseFileRequester.Logic.Properties.Settings.Default.Query_Site = this.txtQuery_Site.Text.Trim();
+                CaseFileRequester.Logic.Properties.Settings.Default.Query_Camera = this.txtQuery_Camera.Text.Trim();
+                CaseFileRequester.Logic.Properties.Settings.Default.Query_File = this.txtQuery_File.Text.Trim();
+                CaseFileRequester.Logic.Properties.Settings.Default.Query_Year = this.txtQuery_Year.Text.Trim();
+                CaseFileRequester.Logic.Properties.Settings.Default.Query_RelatedFiles = this.txtQuery_RelatedFiles.Text.Trim();
+                CaseFileRequester.Logic.Properties.Settings.Default.Query_Submit = this.txtQuery_Submit.Text.Trim();
 
                 // Save data
-                Properties.Settings.Default.Save();
+                CaseFileRequester.Logic.Properties.Settings.Default.Save();
 
                 MessageBox.Show("Los cambios fueron guardados satisfactoriamente!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
